@@ -26,7 +26,7 @@ namespace AdventureQuestRPGTests
             //Act
             int result = BattleSystem.StartBattle(attacker, target);
             //Assert
-            Assert.True(result > 0);
+            Assert.True(result > 0);  
         }
     }
 }
