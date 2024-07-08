@@ -57,7 +57,9 @@ namespace AdventureQuestRPG
             }
             if (attacker.Health == 0)
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine(attacker.Name + "Defeat");
+                Console.ResetColor();
                 return target.Health;
             }
             else

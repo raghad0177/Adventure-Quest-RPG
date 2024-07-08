@@ -46,6 +46,7 @@ namespace AdventureQuestRPG
             }
             if (start == "no")
             {
+                Console.ForegroundColor = colors[map];
                 Console.WriteLine("Come back for new adventures!!");
                 Environment.Exit(0);
             }
@@ -126,8 +127,10 @@ namespace AdventureQuestRPG
                         Console.WriteLine("Game End");
                         Environment.Exit(0);
                     }
+                    Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine($"{player.Name} Wins!!! Level Up!");
                     Console.WriteLine($"{player.Name}'s Health: {player.OriginalHealth}");
+                    Console.ResetColor();
                     Console.WriteLine("-----------------------------------------");
                     // Level up
                     Console.WriteLine("Choose an attribute to increase:");
@@ -203,6 +206,7 @@ namespace AdventureQuestRPG
                 // Check if player lost the battle
                 else if (player.Health == 0 && count<3 )
                 {
+
                     Console.WriteLine($"You lose you have {chance} chance. Try again? (Yes/No)");
                     string again = Console.ReadLine().ToLower();
                     if (again == "yes")
@@ -214,16 +218,20 @@ namespace AdventureQuestRPG
                     }
                     else if (again == "no")
                     {
+                        Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine($"{player.Name} Defeat");
                         Console.WriteLine("Game Over");
+                        Console.ResetColor();
                         Environment.Exit(0);
                     }
                     Console.WriteLine("-----------------------------------------");
                 }
                 else
                 {
+                    Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("You lost your Chance.");
                     Console.WriteLine("Game Over!!");
+                    Console.ResetColor();
                     Environment.Exit(0);
                 }
             }
