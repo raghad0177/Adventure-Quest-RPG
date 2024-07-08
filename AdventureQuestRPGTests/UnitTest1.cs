@@ -1,32 +1,111 @@
-using AdventureQuestRPG;
+using Xunit;
+using System;
+using System.IO;
 
-namespace AdventureQuestRPGTests
+namespace AdventureQuestRPG.Tests
 {
-    public class UnitTest1
+    public class AdventureTests
     {
-        [Theory]
-        [InlineData("Raghad", 10, 9, 3, 4)]
-        [InlineData("Monester", 10, 6, 3, 7)]
-        public void HealthTest(string name, int health, int attackpower, int defense, int expectedHealth)
+        [Fact]
+        public void NewLocationTest()
+        {
+            // Arrange
+            int firstMap = 1;
+            int secondMap = 2;
+
+            // Mock user input to always choose "yes"
+            var input = new StringReader("yes\nyes");
+            TextReader originalInput = Console.In; // Store the original input
+            Console.SetIn(input);
+            try
+            {
+                // Act
+                string first = Adventure.ChooseMap(firstMap);
+                string second = Adventure.ChooseMap(secondMap);
+
+                // Assert
+                Assert.NotEqual(first, second);
+            }
+            finally
+            {
+                // Reset the input to the original
+                Console.SetIn(originalInput);
+            }
+        }
+
+        [Fact]
+        public void FindAndEncounterBoss()
+        {
+            // Arrange
+            Ibrahim ibrahim = new Ibrahim();
+            Monster monster = Adventure.Monsters[4];
+            // Mock user input to "no" for item usage
+            var input = new StringReader("no\n");
+            TextReader originalInput = Console.In; // Store the original input
+            Console.SetIn(input);
+            try
+            {
+                // Act
+                BattleSystem.StartBattle(ibrahim, monster);
+                // Assert
+                Assert.True(monster.Health > 0);
+            }
+            finally
+            {
+                // Reset the input to the original
+                Console.SetIn(originalInput);
+            }
+        }
+
+        [Fact]
+        public void HealthTest()
         {
             //Arrange
-            Player attacker = new Player(name, health, attackpower, defense);
-            Monster target = new Monster(name, health, attackpower, defense);
-            //Act
-            int result = BattleSystem.Attack(attacker, target);
-            //Assert
-            Assert.Equal(expectedHealth, target.Health);
+            Raghad attacker = new Raghad();
+            GiantSpiders target = new GiantSpiders();
+            // Mock user input to "no" for item usage
+            var input = new StringReader("no\nno\n");
+            TextReader originalInput = Console.In; // Store the original input
+            Console.SetIn(input);
+            try
+            {
+                //Act
+                BattleSystem.Attack(attacker, target);
+                BattleSystem.Attack(target, attacker);
+
+                //Assert
+                Assert.Equal(20, target.Health);
+                Assert.Equal(95, attacker.Health);
+            }
+            finally
+            {
+                // Reset the input to the original
+                Console.SetIn(originalInput);
+            }
         }
+
         [Fact]
         public void WinnerTest()
         {
             //Arrange
-            Player attacker = new Player("Raghad", 14, 9, 3);
-            Monster target = new Monster("Monester", 10, 6, 3);
-            //Act
-            int result = BattleSystem.StartBattle(attacker, target);
-            //Assert
-            Assert.True(result > 0);  
+            Raghad attacker = new Raghad();
+            GiantSpiders target = new GiantSpiders();
+            // Mock user input to "no" for item usage
+            var input = new StringReader("no\nno\n");
+            TextReader originalInput = Console.In; 
+            Console.SetIn(input);
+            try
+            {
+                //Act
+                int result = BattleSystem.StartBattle(attacker, target);
+                //Assert
+                Assert.True(result > 0);
+            }
+            finally
+            {
+                // Reset the input to the original
+                Console.SetIn(originalInput);
+            }
         }
     }
 }

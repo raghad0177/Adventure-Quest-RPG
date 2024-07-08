@@ -6,9 +6,7 @@
         {
             try
             {
-                Player attacker = new Player("Raghad", 10, 5, 3);
-                Monster target = new Monster("Monester", 9, 4, 3);
-                BattleSystem.StartBattle(attacker, target);  
+                Adventure.Game();
             }
             catch (FormatException e)
             {
@@ -20,11 +18,8 @@
             }
             finally
             {
-
-                Console.WriteLine("Match End");
-
+                Console.WriteLine("Match End !!");
             }
-
         }
     }
 }
