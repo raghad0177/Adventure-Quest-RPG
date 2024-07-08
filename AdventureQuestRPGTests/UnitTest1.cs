@@ -85,7 +85,7 @@ namespace AdventureQuestRPG.Tests
         }
 
         [Fact]
-        public void WinnerTest()
+        public void WinnerTest()  
         {
             //Arrange
             Raghad attacker = new Raghad();
