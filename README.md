@@ -1,42 +1,67 @@
-# Adventure-Quest-RPG
-BattleSystem
-Overview
-The BattleSystem class simulates a turn-based battle between a player and a monster. The system manages attacks, calculates damage, and determines the outcome of the battle based on the health of the participants.
+# AdventureQuestRPG
 
-Class Details
-BattleSystem
-The BattleSystem class contains two main methods:
+AdventureQuestRPG is a text-based role-playing game (RPG) implemented in C#. Players engage in battles against various monsters and bosses, utilizing items to enhance their abilities and survive through multiple levels.
 
-Attack(dynamic attacker, dynamic target): Simulates an attack from the attacker to the target, calculates damage, and updates the target's health.
-StartBattle(Player attacker, Monster target): Starts the battle between the player and the monster, alternating turns until one of them is defeated.
-Methods
-int Attack(dynamic attacker, dynamic target)
-Simulates an attack from the attacker to the target, calculates the damage dealt, and updates the target's health.
+## Table of Contents
 
-Parameters:
-attacker (dynamic): The attacking entity.
-target (dynamic): The target entity.
-Returns:
-int: The updated health of the target.
-Logic:
-If the target's health is less than 0, set damage to 0 and target's health to 0.
-Calculate damage as the difference between the attacker's attack power and the target's defense.
-Update the target's health by subtracting the damage.
-Ensure the target's health does not go below 0.
-Print the attack details and the updated health of the target.
-int StartBattle(Player attacker, Monster target)
-Starts a turn-based battle between the player and the monster until one of them is defeated.
+- [Introduction](#introduction)
+- [Features](#features)
+- [Getting Started](#getting-started)
+- [Usage](#usage)
+- [Testing](#testing)
+- [Contributing](#contributing)
+- [License](#license)
 
-Parameters:
-attacker (Player): The player attacking.
-target (Monster): The monster being attacked.
-Returns:
-int: The remaining health of the winner.
-Logic:
-Initialize a random number generator.
-Loop while both the attacker and the target have health greater than 0:
-Randomly determine whose turn it is to attack.
-If it's the attacker's turn, call the Attack method with the attacker and target.
-If it's the target's turn, call the Attack method with the target and attacker.
-Print the result of the battle based on who has health remaining.
-Return the health of the winner.
+## Introduction
+
+AdventureQuestRPG simulates an adventure where players battle monsters and bosses using a turn-based system. It includes character classes, items, and randomized encounters for an engaging gameplay experience.
+
+## Features
+
+- **Characters:**
+  - Playable characters: Ibrahim and Raghad, each with unique stats and abilities.
+  - Non-playable characters (NPCs): Various monsters like Giant Spiders, Goblins, Ghosts, Dragons, and the formidable boss, Lucifer.
+
+- **Battle System:**
+  - Turn-based combat between players and monsters.
+  - Dynamic calculation of damage based on attack power and defense stats.
+  - Random item drops upon defeating enemies.
+
+- **Inventory System:**
+  - Manage and use items like swords (increase attack power), armor (increase defense), and vitality items (restore health).
+
+## Getting Started
+
+To run AdventureQuestRPG on your local machine, follow these steps:
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/your-username/AdventureQuestRPG.git
+   cd AdventureQuestRPG
+2. **Compile and run:
+Open the solution in Visual Studio or compile directly using .NET CLI:
+dotnet build
+dotnet run
+
+## Usage
+Initial Setup:
+
+Choose a map and navigate through different levels by interacting with prompts.
+Use items before battles to enhance character stats.
+Battle Mechanics:
+
+Engage in turn-based combat against monsters and bosses.
+Monitor health, attack power, and defense during battles.
+Item Management:
+
+View inventory status and decide when to use items based on battle conditions.
+
+## Testing
+AdventureQuestRPG includes unit tests to ensure functionality and reliability. To run tests:
+dotnet test
+
+## Contributing
+Contributions are welcome! Fork the repository and submit a pull request with your enhancements. Make sure to follow the project's coding conventions and include relevant test cases for new features.
+
+## License
+This project is licensed under the MIT License - see the LICENSE file for details.
