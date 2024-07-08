@@ -18,7 +18,7 @@ namespace AdventureQuestRPGTests
             Assert.Equal(expectedHealth, target.Health);
         }
         [Fact]
-        public void WinnerTest()
+        public void WinnerTest()  
         {
             //Arrange
             Player attacker = new Player("Raghad", 14, 9, 3);
